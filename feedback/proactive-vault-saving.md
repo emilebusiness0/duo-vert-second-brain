@@ -22,6 +22,8 @@ Emile explicitly asked (2026-07-30) that this not be a Cowork-only behavior — 
 
 **Always announce it (added 2026-07-30, per direct request):** whenever a file in the vault gets written or updated, say so explicitly in the reply — which file, roughly what was added. Never save silently. Emile caught this being skipped once already (the reasoning-and-pushback preference wasn't saved until he questioned it) — visibility is the whole point, don't let saves happen invisibly again.
 
+**Also push to GitHub automatically, no Terminal step needed from Emile (confirmed working 2026-07-30):** `git config credential.helper` returns `osxkeychain` on this Mac — meaning Emile's GitHub token was cached in macOS Keychain the first time he entered it manually, and Claude Code can commit AND push using that cached credential without any prompt or Emile involvement. After every vault write, run `git add -A && git commit -m "..." && git push` in `~/Documents/second-brain` — don't leave commits unpushed waiting on Emile to run it himself, that defeats the point. Only fall back to asking Emile to push manually if a push ever actually fails/prompts for credentials again (e.g. token expired or revoked).
+
 This mirrors the same instruction given to Cowork (see `personal/about-emile.md` and the Cowork `duo-vert-ops` skill for the Cowork-side version, which has to ask Emile to relay instead of writing directly, since Cowork lacks write access).
 
 See also: [[duo-vert/memory-architecture]], [[personal/about-emile]]
