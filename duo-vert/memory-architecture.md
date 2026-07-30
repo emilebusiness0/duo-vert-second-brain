@@ -30,4 +30,14 @@ metadata:
 
 **Going forward:** every future Code/Cowork session working on Duo Vert should read this vault's `README.md` first, then write a short dated update to the relevant file at session end — this is how "what did we do 2 weeks ago" will keep working. Confirmed with Emile this is the expected behavior (2026-07-30).
 
+## Cowork read/write investigation — resolved read, unresolved write (2026-07-30)
+
+Connected the vault to Cowork via a GitHub repo (`emilebusiness0/duo-vert-second-brain`, mirror of this vault, pushed manually via `git push` from Terminal since Cowork can't handle credentials). Repo made **public** after private-repo auth was confirmed as the likely reason a generic web-fetch tool returned empty results.
+
+**Read side — works, but not via the expected path.** Cowork's own web-fetch tool failed twice even on the public repo (returned URL, not content — cause unclear, possibly still environment-specific). It self-recovered by finding a different available integration ("vibiz") that successfully retrieved accurate content, matching the real vault file names — confirmed genuine, not hallucinated. Not a clean/guaranteed mechanism, but functional in practice across 2 tests.
+
+**Write side — does not work, ruled out deliberately.** Tested whether Cowork had any sandbox/shell environment (its "Code" sidebar tab turned out to just be a shortcut into Claude Code itself, not an independent execution environment) — confirmed none exists, so there's no way for Cowork to `git push` updates back to the repo. The earlier in-chat folder-connect tool also doesn't persist across sessions (confirmed via direct test: a fresh conversation had zero folder access despite a prior session having granted it).
+
+**Resolution:** Cowork's `duo-vert-ops` skill (Cowork's own local copy, separate file from this vault) now instructs it to draft a copy-pasteable update in the chat reply at session end instead of attempting to write anywhere, and Emile relays it into a Code session or edits the GitHub file directly. This is a manual step, but only needed for sessions that actually produced something worth remembering — not every session.
+
 See also: [[duo-vert/company]], [[duo-vert/sheets-tracking]], [[duo-vert/website-build-overview]]
