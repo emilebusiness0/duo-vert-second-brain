@@ -24,9 +24,10 @@ metadata:
 
 **Confirmed working end-to-end this session:** Obsidian opened the vault correctly via "Open folder as vault" (the `obsidian://open` deep-link didn't work on first launch before any vault existed — needed the manual Open once; should work automatically after that). Graph view confirmed functional.
 
-**Still outstanding, not done yet:**
-1. Cowork's `duo-vert-ops` skill has read/write instructions pointing at this vault, but the vault folder itself has not been connected to a Cowork session yet — that's a UI action only Emile can do (no tool exists to do it remotely). Until connected, Cowork cannot actually reach these files.
-2. `duovert-site-fixed` (actual website source) still not transferred from the old computer to this Mac.
+**Still outstanding, not done yet (updated same day, earlier version of this list was stale — see resolved investigation below for what changed):**
+1. `duovert-site-fixed` (actual website source) still not transferred from the old computer to this Mac — the one blocking item, unrelated to the vault itself.
+2. **Cowork's per-project Instructions field** (separate from the `duo-vert-ops` skill file) — a read-bias + proactive-flagging instruction text was drafted and given to Emile, but as of this writing he has **not yet pasted it into any of his 8 Cowork projects**. Only the Duo Vert project has the GitHub-Context connection; the Instructions text needs manually pasting into all 8 for this behavior to apply everywhere, not just Duo Vert.
+3. **Unconfirmed:** whether Cowork has an account-level (not per-project) Memory/Personalization setting that could cover all 8 projects without connecting the GitHub repo to each individually — Emile was going to check `Emile · Pro` account settings / Customize, no confirmed answer either way yet.
 
 **Going forward:** every future Code/Cowork session working on Duo Vert should read this vault's `README.md` first, then write a short dated update to the relevant file at session end — this is how "what did we do 2 weeks ago" will keep working. Confirmed with Emile this is the expected behavior (2026-07-30).
 
