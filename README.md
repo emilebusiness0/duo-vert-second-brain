@@ -5,7 +5,11 @@ description: Index of everything in this vault
 
 # Second Brain
 
-This is Emile's shared knowledge vault — read by Claude Code at the start of every session, and (once connected) by Claude Cowork too. Curated facts only, not raw conversation transcripts — see [[duo-vert/memory-architecture]] for why.
+This is Emile's shared knowledge vault — read by Claude Code at the start of every session, and (once connected) by Claude Cowork too. Curated facts only, not raw conversation transcripts — see [[duo-vert/memory-architecture]] for why. Not limited to Duo Vert — any topic gets its own section as it comes up.
+
+## Personal (general, not Duo Vert-specific)
+
+- [[personal/about-emile]] — general facts, preferences, other projects (separate from Duo Vert business/site facts)
 
 ## Duo Vert — business & ops
 
