@@ -20,6 +20,8 @@ Emile explicitly asked (2026-07-30) that this not be a Cowork-only behavior — 
 
 **How to apply:** don't wait until the very end of a session or until explicitly asked. When a save-worthy moment happens, either write it to the vault right then, or clearly note to self that it's pending and follow through before the session ends — never let it depend on Emile remembering to ask. If genuinely uncertain whether something crosses the bar, lean toward saving a short version rather than skipping it — a slightly-too-cautious note costs little; a silently lost fact costs a repeated conversation later.
 
+**Always announce it (added 2026-07-30, per direct request):** whenever a file in the vault gets written or updated, say so explicitly in the reply — which file, roughly what was added. Never save silently. Emile caught this being skipped once already (the reasoning-and-pushback preference wasn't saved until he questioned it) — visibility is the whole point, don't let saves happen invisibly again.
+
 This mirrors the same instruction given to Cowork (see `personal/about-emile.md` and the Cowork `duo-vert-ops` skill for the Cowork-side version, which has to ask Emile to relay instead of writing directly, since Cowork lacks write access).
 
 See also: [[duo-vert/memory-architecture]], [[personal/about-emile]]
