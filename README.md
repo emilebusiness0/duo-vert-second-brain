@@ -28,6 +28,7 @@ This is Emile's shared knowledge vault — read by Claude Code at the start of e
 ## Feedback (how Emile wants work approached)
 
 - [[feedback/build-locally-not-live-browser]] — prefer local deliverable files over driving live browser UIs
+- [[feedback/proactive-vault-saving]] — catch and save significant moments without being asked; Code writes directly, Cowork flags for Emile to relay
 
 ---
 
