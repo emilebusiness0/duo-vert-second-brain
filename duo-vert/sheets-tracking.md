@@ -26,7 +26,7 @@ Sheet: "Duo Vert - Suivi Leads". 4 tabs: Pré-soumission, Post-soumission, Perdu
 
 **Website form → Sheet pipeline:** duovert.ca's two quote forms (Netlify Forms) send a webhook on submission. Apps Script Web Apps always 302-redirect their response, and Netlify's webhook sender preserves POST instead of downgrading to GET on that redirect — so pointing the webhook directly at Apps Script always eventually breaks (405, then Netlify auto-disables the hook after 6 failures). **Fix:** a small serverless proxy function sits between Netlify and Apps Script, using Node's native `fetch` (which correctly downgrades POST→GET on 302) — deployed as its own minimal Netlify site, separate from duovert.ca's actual deploy.
 
-Full technical detail (exact URLs, source file, dedup safeguard) lives in the `duo-vert` Claude Code skill's "Lead Tracking System" section — not duplicated here.
+Full technical detail (exact URLs, source file, dedup safeguard) — not yet migrated into this vault; check the old `duo-vert` Claude Code skill file if it still exists, or treat as needing a fresh capture next time this comes up.
 
 **Lesson learned:** never drag a folder onto an *existing* Netlify site's deploy area to test something unrelated — did this once and replaced the live duovert.ca site with a placeholder. Recovered via Netlify's Deploys tab (full deploy history is always recoverable), but always use "Add new site → Deploy manually" for anything not meant to replace the live site.
 

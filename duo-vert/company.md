@@ -18,7 +18,7 @@ Duo Vert is [[duo-vert/company|Emile]]'s own company — a 2-person interlock pa
 
 **Reputation:** 5-star rated on Google, testimonials from named clients (Jessy via Instagram, Jeff via Google) featured on the site.
 
-**Current project:** an SEO-optimized static HTML website (duovert.ca) to rank for pavé-uni searches in Gatineau/Ottawa. Full build details, page-by-page status, and design-system rules live in the `duo-vert` Claude Code skill (`.claude/skills/duo-vert/SKILL.md`) — this note is the company/business-level summary, not a substitute for that skill.
+**Current project:** an SEO-optimized static HTML website (duovert.ca) to rank for pavé-uni searches in Gatineau/Ottawa. Full build details, page-by-page status, and design-system rules live in [[duo-vert/website-build-overview]] and [[duo-vert/design-system]] — this note is the company/business-level summary, not a substitute for those.
 
 **Contact info (live on site, verify before reusing — may change):** duo.vert.gatineau@gmail.com, 819 328-2129.
 **Business age:** site states ~2 years of experience (as of 2026-07-29).

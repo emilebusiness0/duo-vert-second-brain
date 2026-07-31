@@ -31,6 +31,8 @@ This is Emile's shared knowledge vault — read by Claude Code at the start of e
 - [[feedback/proactive-vault-saving]] — catch and save significant moments without being asked; Code writes directly, Cowork flags for Emile to relay
 - [[feedback/proactive-vault-reading]] — bias toward opening a vault file when in doubt about relevance, so advice/opinions are informed by it, not just direct topic questions
 - [[feedback/reasoning-and-pushback]] — explain reasoning, push back instead of agreeing by default, verify claims scaled to stakes
+- [[feedback/browser-verification-token-cost]] — prefer text extraction over screenshots when verifying browser state
+- [[feedback/label-vault-file-mentions]] — append "(second brain)" after any vault filename mentioned in chat
 
 ---
 
