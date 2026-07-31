@@ -33,6 +33,7 @@ This is Emile's shared knowledge vault — read by Claude Code at the start of e
 - [[feedback/reasoning-and-pushback]] — explain reasoning, push back instead of agreeing by default, verify claims scaled to stakes
 - [[feedback/browser-verification-token-cost]] — prefer text extraction over screenshots when verifying browser state
 - [[feedback/label-vault-file-mentions]] — append "(second brain)" after any vault filename mentioned in chat
+- [[feedback/vault-cross-reference-integrity]] — propagate moved facts/new files to all referencing files + README in the same edit
 
 ---
 
