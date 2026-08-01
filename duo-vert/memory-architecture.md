@@ -24,10 +24,10 @@ metadata:
 
 **Confirmed working end-to-end this session:** Obsidian opened the vault correctly via "Open folder as vault" (the `obsidian://open` deep-link didn't work on first launch before any vault existed — needed the manual Open once; should work automatically after that). Graph view confirmed functional.
 
-**Still outstanding, not done yet (updated 2026-08-01, item 1 resolved — see below):**
-1. ~~`duovert-site-fixed` not transferred from old computer~~ — **RESOLVED 2026-08-01.** Emile uploaded the folder to Google Drive; Claude Code pulled it via the Drive API, restored it to `~/Documents/duovert-site`, rebuilt `node_modules` via `npm install`, and verified local preview works (`npm run dev`, port 3000). Full detail in [[duo-vert/website-build-overview]].
-2. **Cowork's per-project Instructions field** (separate from the `duo-vert-ops` skill file) — a read-bias + proactive-flagging instruction text was drafted and given to Emile, but as of this writing he has **not yet pasted it into any of his 8 Cowork projects**. Only the Duo Vert project has the GitHub-Context connection; the Instructions text needs manually pasting into all 8 for this behavior to apply everywhere, not just Duo Vert.
-3. **Unconfirmed:** whether Cowork has an account-level (not per-project) Memory/Personalization setting that could cover all 8 projects without connecting the GitHub repo to each individually — Emile was going to check `Emile · Pro` account settings / Customize, no confirmed answer either way yet.
+**Still outstanding (Tasks-plugin format, added 2026-08-01 — installed the Obsidian Tasks plugin, converting this list to real trackable checkboxes instead of prose):**
+- [x] `duovert-site-fixed` transferred from old computer ✅ 2026-08-01 — Emile uploaded to Google Drive; Claude Code pulled it via the Drive API, restored to `~/Documents/duovert-site`, rebuilt `node_modules`, verified local preview (`npm run dev`, port 3000). Full detail in [[duo-vert/website-build-overview]].
+- [ ] Paste the drafted read-bias + proactive-flagging Instructions text into all 8 of Emile's Cowork projects (separate from the `duo-vert-ops` skill file) — only the Duo Vert project has it applied so far via the GitHub-Context connection.
+- [ ] Check whether Cowork has an account-level (not per-project) Memory/Personalization setting that could cover all 8 projects without connecting the GitHub repo to each individually — check under `Emile · Pro` account settings / Customize.
 
 **Going forward:** every future Code/Cowork session working on Duo Vert should read this vault's `README.md` first, then write a short dated update to the relevant file at session end — this is how "what did we do 2 weeks ago" will keep working. Confirmed with Emile this is the expected behavior (2026-07-30).
 

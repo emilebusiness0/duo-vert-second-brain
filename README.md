@@ -15,7 +15,7 @@ This is Emile's shared knowledge vault — read by Claude Code at the start of e
 ## Duo Vert — business & ops
 
 - [[duo-vert/company]] — the business: services, pricing, area, team
-- [[duo-vert/sheets-tracking]] — the 3-sheet back office plan (leads, expenses, clients/revenue)
+- [[duo-vert/sheets-tracking]] — the 3-sheet back office plan (leads, expenses, clients/revenue); see also `Excalidraw/lead-webhook-pipeline.excalidraw.md` for a visual diagram of the lead pipeline
 - [[duo-vert/memory-architecture]] — how this vault works, why curated over raw-dump, the Code/Cowork sync gap
 
 ## Duo Vert — website build (duovert.ca, ~6 months of history)
