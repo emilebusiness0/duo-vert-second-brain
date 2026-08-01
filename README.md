@@ -34,6 +34,7 @@ This is Emile's shared knowledge vault — read by Claude Code at the start of e
 - [[feedback/browser-verification-token-cost]] — prefer text extraction over screenshots when verifying browser state
 - [[feedback/label-vault-file-mentions]] — append "(emile-secondbrain)" after any vault filename mentioned in chat
 - [[feedback/vault-cross-reference-integrity]] — propagate moved facts/new files to all referencing files + README in the same edit
+- [[feedback/rename-move-verification-checklist]] — on any rename/move, check both "still functions" AND "every identity registry updated" before declaring done
 
 ---
 
