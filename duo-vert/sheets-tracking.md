@@ -3,7 +3,7 @@ name: duo-vert-sheets-tracking
 description: Emile's plan for 3 Google Sheets (leads, expenses, clients/revenue) for Duo Vert, and the lead-tracking automation that's now live
 metadata:
   type: project
-  modified: 2026-07-30
+  modified: 2026-08-01
 ---
 
 Emile wants 3 Google Sheets (tabs, not website pages) to run [[duo-vert/company|Duo Vert]]'s back office:
@@ -24,9 +24,15 @@ Sheet: "Duo Vert - Suivi Leads". 4 tabs: Pré-soumission, Post-soumission, Perdu
 - Both follow-ups checked + 5 days no resolution → daily trigger auto-moves to Perdu, Raison = Sans réponse.
 - Lead numbers auto-increment via a script property counter.
 
-**Website form → Sheet pipeline:** duovert.ca's two quote forms (Netlify Forms) send a webhook on submission. Apps Script Web Apps always 302-redirect their response, and Netlify's webhook sender preserves POST instead of downgrading to GET on that redirect — so pointing the webhook directly at Apps Script always eventually breaks (405, then Netlify auto-disables the hook after 6 failures). **Fix:** a small serverless proxy function sits between Netlify and Apps Script, using Node's native `fetch` (which correctly downgrades POST→GET on 302) — deployed as its own minimal Netlify site, separate from duovert.ca's actual deploy.
+**Website form → Sheet pipeline:** duovert.ca's two quote forms — `soumission-gratuite` on `/soumission/`, `soumission-accueil` on the homepage, both Netlify Forms with identical fields (nom, telephone, courriel, adresse, service, message, photo) — send a webhook on submission via Netlify's "Form submission notifications → HTTP POST request" feature.
 
-Full technical detail (exact URLs, source file, dedup safeguard) — not yet migrated into this vault; check the old `duo-vert` Claude Code skill file if it still exists, or treat as needing a fresh capture next time this comes up.
+**⚠️ Critical incompatibility (why a direct webhook doesn't work):** Google Apps Script Web Apps always respond via a 302 redirect to a `script.googleusercontent.com` URL to serve their actual output — unavoidable, baked into the platform. Netlify's webhook sender follows that redirect but preserves POST instead of downgrading to GET (which the redirect target requires), so it always gets **405 Method Not Allowed** back — even though the Apps Script `doPost()` already executed and wrote the row *before* the redirect was issued. After 6 consecutive perceived failures, Netlify **auto-disables the webhook**. This is structural, not a transient bug — pointing the webhook directly at the Apps Script `/exec` URL will always eventually break this way, and no Apps Script code change fixes it.
+
+**Fix — the proxy, full detail:** a small serverless proxy function sits between Netlify and Apps Script. It receives the webhook, forwards it to Google using Node's native `fetch` (which correctly downgrades POST→GET on 302 per spec), and returns a clean `200` to Netlify. Live at **`https://elaborate-gumdrop-199ffb.netlify.app/.netlify/functions/lead-webhook`**, deployed as its own **separate, minimal Netlify site** — NOT part of duovert.ca's actual deploy/repo (`~/Documents/duovert-site`), so nothing in that repo controls or documents this proxy; it's a standalone Netlify site with its own source. Source: single file `netlify/functions/lead-webhook.js` + a `netlify.toml` with `[functions] directory = "netlify/functions"` (required — Netlify's drag-and-drop manual deploys don't auto-detect a functions folder without it). Both of duovert.ca's form webhooks point at this proxy URL, not at the Apps Script URL directly.
+
+**This proxy's own source files were NOT part of the `duovert-site-fixed` Drive transfer (2026-08-01)** — it's a separate Netlify site/deploy, so restoring `duovert-site` did not include or affect it. If this proxy's source is ever needed again (e.g. to redeploy it, or after it breaks), it isn't sitting anywhere on this Mac yet — would need to be tracked down (check Netlify's dashboard for that site, or Émile's other backups) and captured properly, ideally as its own small git repo, the same way `duovert-site` now is.
+
+The Apps Script has a dedup safeguard (`isDuplicateSubmission`, keyed by Netlify's submission payload) in case Netlify ever retries a delivery — prevents duplicate rows even if a retry occurs. Verified working via a real end-to-end test submission on 2026-07-29 (single row landed, no duplicates).
 
 **Lesson learned:** never drag a folder onto an *existing* Netlify site's deploy area to test something unrelated — did this once and replaced the live duovert.ca site with a placeholder. Recovered via Netlify's Deploys tab (full deploy history is always recoverable), but always use "Add new site → Deploy manually" for anything not meant to replace the live site.
 
