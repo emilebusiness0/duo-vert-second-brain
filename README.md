@@ -10,6 +10,7 @@ This is Emile's shared knowledge vault — read by Claude Code at the start of e
 ## Personal (general, not Duo Vert-specific)
 
 - [[personal/about-emile]] — general facts, preferences, other projects (separate from Duo Vert business/site facts)
+- [[personal/dev-environment]] — what's installed/authenticated on his Mac (Homebrew, gh CLI) for Claude Code to use directly
 
 ## Duo Vert — business & ops
 
