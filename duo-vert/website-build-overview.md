@@ -3,16 +3,16 @@ name: duo-vert-website-build-overview
 description: Website project status, source-of-file-truth location, and the launch checklist — migrated from the duo-vert Claude Code skill
 metadata:
   type: project
-  modified: 2026-07-30
+  modified: 2026-08-01
 ---
 
-Goal: 15+ page static HTML site (duovert.ca) to rank #1 for pavé-uni searches in Gatineau/Ottawa. See [[duo-vert/company]] for the business itself.
+Goal: 15+ page site (duovert.ca) to rank #1 for pavé-uni searches in Gatineau/Ottawa. See [[duo-vert/company]] for the business itself. **Correction (2026-08-01):** the actual project is Vite + React (`package.json` confirms `react`, `vite`), not plain static HTML as previously described here — each page under `public/` is still a static, pre-built `index.html` though, so the SEO-visible-content workflow is unaffected.
 
-**Source of truth for the actual files:** was `duovert-site-fixed` on the old computer's Downloads — **not yet transferred to the new Mac** as of 2026-07-30. Nothing local-file-editable can happen until Emile transfers it (AirDrop/external drive/cloud). Don't try to reconstruct it from the live duovert.ca deploy.
+**Source of truth for the actual files (resolved 2026-08-01):** transferred from the old computer via Emile uploading to Google Drive, then Claude Code pulling it down directly through the Drive API, unzipping, and restoring. Now lives at `~/Documents/duovert-site` on this Mac (renamed from `duovert-site-fixed`). `node_modules` was deleted before the Drive zip export (Drive's zip has a file-count limit `node_modules` blew past) and rebuilt locally via `npm install` — fully safe, it's in `.gitignore` and reinstalls byte-identical from `package-lock.json`. The `.git` folder survived the round-trip but was empty (`objects`/`refs` never survived zip export since they were empty directories) — turned out there was no actual commit history to lose; ran `git init` to restore the skeleton and made a fresh root commit (109 files) as the new baseline.
 
 **Workflow (as of 2026-07-18): edit locally, not in AI Studio/Gemini prompts.** Reason: AI Studio's own project storage repeatedly and spontaneously corrupted binary image files — a platform-level reliability bug, recurred multiple times even after fixes. Editing locally with git avoids the category entirely (images are just files on disk). AI Studio may still be referenced for historical workflow context (see [[duo-vert/ai-studio-playbook]]) but shouldn't be used for future edits unless explicitly requested.
 
-**Local preview:** static file server rooted at `duovert-site-fixed`, with `public/*` overlaid at the served root (Vite `public/` convention — `/logo-duovert.png` must resolve at root, not `/public/logo-duovert.png`). Verify image changes with a real fetch+decode test, not just file-exists.
+**Local preview (corrected 2026-08-01):** this is a Vite + React project (`package.json` has `dev`/`build`/`preview` scripts via Vite), not a plain static server. Run `npm run dev` from `~/Documents/duovert-site` — it starts on **port 3000** (custom-configured in `vite.config.ts`, not Vite's default 5173). Vite's own `public/` convention correctly overlays `public/*` at the served root (`/logo-duovert.png`, `/restauration-pave-uni-gatineau/` etc. all resolve, confirmed 2026-08-01 via curl 200s). The stale `.claude/launch.json` in that repo (pointing `npx serve -p 5174 .`) does NOT apply the public/ overlay correctly — plain `serve` returns 404s for anything under `public/`; don't use it, use `npm run dev` instead. Verify image changes with a real fetch+decode test, not just file-exists.
 
 **Deploy:** drag the entire `duovert-site-fixed` folder (not its unpacked contents) onto Netlify's manual deploy drop zone. Confirmed working. **Lesson:** never drag an unrelated test folder onto an *existing* site's deploy area — did this once, replaced the live site with a placeholder proxy folder; recovered via Netlify's Deploys tab → "Publish deploy" on the previous good deploy (full history always recoverable, but avoid it).
 
