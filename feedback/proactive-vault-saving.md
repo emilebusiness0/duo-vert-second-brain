@@ -3,7 +3,7 @@ name: feedback-proactive-vault-saving
 description: Standing instruction to proactively write significant facts/lessons/preferences to the vault during or at the end of a session, without waiting to be asked
 metadata:
   type: feedback
-  modified: 2026-07-30
+  modified: 2026-08-01
 ---
 
 Emile explicitly asked (2026-07-30) that this not be a Cowork-only behavior — Claude Code should hold itself to the same standard, and since Code has real write access to the vault (unlike Cowork), the bar is higher: don't just notice something is worth saving, actually save it.
@@ -30,4 +30,8 @@ Emile explicitly asked (2026-07-30) that this not be a Cowork-only behavior — 
 
 This mirrors the same instruction given to Cowork (see `personal/about-emile.md` and the Cowork `duo-vert-ops` skill for the Cowork-side version, which has to ask Emile to relay instead of writing directly, since Cowork lacks write access).
 
-See also: [[duo-vert/memory-architecture]], [[personal/about-emile]]
+**Zero-tolerance escalation (2026-08-01) — Emile should NEVER have to ask "did you save that" or "should this be added," ever, full stop.** This happened again on 2026-08-01 (the rename-verification-checklist lesson was said out loud — "I'll fold this into a checklist" — but not written until Emile pushed back), on top of the 2026-07-30 incidents above. This is now a recurring pattern, not a one-off: verbally committing to remember something ("I'll note this," "I'll keep this in mind," "good to remember for next time") without immediately writing it down.
+
+**The concrete fix Emile wants:** the moment any sentence like "I'll remember/note/fold this in/keep this in mind for next time" is about to be said, treat that exact phrase as the trigger to stop and write the file *in the same turn*, before doing anything else — not a promissory note to act on eventually. If a save-worthy moment is identified, the write happens immediately, then gets announced (per the rule above) — never the announcement alone standing in for the write. There is no acceptable version of "I'll remember this" that isn't backed by an actual file write in that same response.
+
+See also: [[duo-vert/memory-architecture]], [[personal/about-emile]], [[feedback/rename-move-verification-checklist]]
