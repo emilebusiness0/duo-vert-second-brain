@@ -16,6 +16,12 @@ Goal: 15+ page site (duovert.ca) to rank #1 for pavé-uni searches in Gatineau/O
 
 **Deploy:** drag the entire `duovert-site-fixed` folder (not its unpacked contents) onto Netlify's manual deploy drop zone. Confirmed working. **Lesson:** never drag an unrelated test folder onto an *existing* site's deploy area — did this once, replaced the live site with a placeholder proxy folder; recovered via Netlify's Deploys tab → "Publish deploy" on the previous good deploy (full history always recoverable, but avoid it).
 
+**Exact-match verification (2026-08-01):** did a full byte-level diff of every page's raw HTML (all 25 top-level pages + `soumission/merci` + `reference/merci`, i.e. every folder under `public/`) between the restored local copy and live duovert.ca. Result: 26/27 were already byte-identical; 3 forms (`soumission-accueil` on homepage, `soumission-gratuite`, `programme-reference`) had `data-netlify="true" netlify-honeypot="bot-field"` attributes in the local source that live did NOT have — removed to match live exactly (see git commit `19a2280`).
+
+**Netlify Forms gotcha this surfaced — important if the site is ever redeployed to a *new* Netlify site:** Netlify detects/registers a form by scanning for `data-netlify="true"` **at deploy time**. The 3 forms above no longer have that attribute in source, which is fine for continuing to deploy to the *same, already-registered* Netlify site (forms stay registered once seen, even after the attribute is later removed) — but if this repo is ever deployed fresh to a **different** Netlify site, those 3 forms will silently fail to register/submit until `data-netlify="true"` is temporarily added back for one deploy, then can be removed again to match live's current markup.
+
+**Also verified, not a bug:** HTTP response headers differ between local (`npm run dev`) and live (Netlify's CDN: `server: Netlify`, `cache-status`, `strict-transport-security`, etc.) — expected, since those come from Netlify's edge/platform layer at deploy time, not from anything in the source files. `netlify.toml`'s only custom rule is 1-year immutable caching for `.jpg/.png/.webp`, already correctly configured, nothing to change.
+
 ## Page status (as of last full audit)
 
 All 27 pages done except items below were still 🔄/⏳ at last check:
