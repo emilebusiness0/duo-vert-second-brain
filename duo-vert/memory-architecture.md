@@ -8,7 +8,7 @@ metadata:
 
 **Setup (2026-07-30):** Emile migrated from an old computer to a new Mac, which surfaced that Claude Code's memory (`~/.claude/projects/.../memory/`) is local to one machine, and separate from Cowork's own skill storage and claude.ai's memory feature — three disconnected stores. Also discovered `duovert-site-fixed` (the actual website source files) never made it to the new Mac; the Netlify-deployed site's source still needs transferring from the old machine.
 
-**This vault (`~/Documents/second-brain/`) is the fix for the memory-fragmentation part**, not the missing-site-files part. Structure: a small `README.md` index + one file per topic, cross-linked with `[[wikilinks]]` — same pattern Claude Code's memory already used, just relocated somewhere both Code and (once connected) Cowork can reach, and Obsidian-browsable.
+**This vault (`~/Documents/emile-secondbrain/`) is the fix for the memory-fragmentation part**, not the missing-site-files part. Structure: a small `README.md` index + one file per topic, cross-linked with `[[wikilinks]]` — same pattern Claude Code's memory already used, just relocated somewhere both Code and (once connected) Cowork can reach, and Obsidian-browsable.
 
 **Curated, not raw-dump.** Considered and rejected a PDF-guide approach (an Instagram lead-magnet from @alex2learn) that parses every Claude Code `.jsonl` session file into one markdown file per session (raw transcripts, tool calls included). Rejected because: (1) it scales to tens of MB of mostly noise per year, (2) the guide's own docs flag a real risk of leaked API keys sitting in old raw sessions, (3) it only covers Claude Code, not Cowork or claude.ai, (4) it isn't actually automatic either — needs a manual `/slay` sync command. Curated notes avoid all four: small, nothing goes in that wasn't deliberately written, works the same for any product that can read a folder, and Obsidian's graph view is actually *more* useful over ~40 meaningful topic nodes than over hundreds of raw session dumps.
 
@@ -33,7 +33,7 @@ metadata:
 
 ## Cowork read/write investigation — resolved read, unresolved write (2026-07-30)
 
-Connected the vault to Cowork via a GitHub repo (`emilebusiness0/duo-vert-second-brain`, mirror of this vault, pushed manually via `git push` from Terminal since Cowork can't handle credentials). Repo made **public** after private-repo auth was confirmed as the likely reason a generic web-fetch tool returned empty results.
+Connected the vault to Cowork via a GitHub repo (`emilebusiness0/emile-secondbrain`, renamed 2026-08-01 from `duo-vert-second-brain` since the vault covers more than Duo Vert now; mirror of this vault, pushed manually via `git push` from Terminal since Cowork can't handle credentials). Repo made **public** after private-repo auth was confirmed as the likely reason a generic web-fetch tool returned empty results.
 
 **Read side — works, but not via the expected path.** Cowork's own web-fetch tool failed twice even on the public repo (returned URL, not content — cause unclear, possibly still environment-specific). It self-recovered by finding a different available integration ("vibiz") that successfully retrieved accurate content, matching the real vault file names — confirmed genuine, not hallucinated. Not a clean/guaranteed mechanism, but functional in practice across 2 tests.
 
