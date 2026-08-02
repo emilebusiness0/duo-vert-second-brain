@@ -10,12 +10,15 @@ This is Emile's shared knowledge vault — read by Claude Code at the start of e
 ## Personal (general, not Duo Vert-specific)
 
 - [[personal/about-emile]] — general facts, preferences, other projects (separate from Duo Vert business/site facts)
-- [[personal/dev-environment]] — what's installed/authenticated on his Mac (Homebrew, gh CLI) for Claude Code to use directly
+- [[personal/dev-environment]] — what's installed/authenticated on his Mac (Homebrew, gh CLI, Playwright MCP) for Claude Code to use directly
+- [[personal/golf-hobby]] — left-handed, beginner golfer building out a Wilson Ultra set
+- [[project-current-todo-list]] — active cross-project to-do list
 
 ## Duo Vert — business & ops
 
 - [[duo-vert/company]] — the business: services, pricing, area, team
 - [[duo-vert/sheets-tracking]] — the 3-sheet back office plan (leads, expenses, clients/revenue); see also `Excalidraw/lead-webhook-pipeline.excalidraw.md` for a visual diagram of the lead pipeline
+- [[duo-vert/soumission-template]] — client quote (soumission) Google Doc template, pricing rules, Drive API gotchas
 - [[duo-vert/memory-architecture]] — how this vault works, why curated over raw-dump, the Code/Cowork sync gap
 
 ## Duo Vert — website build (duovert.ca, ~6 months of history)
@@ -36,6 +39,7 @@ This is Emile's shared knowledge vault — read by Claude Code at the start of e
 - [[feedback/label-vault-file-mentions]] — append "(emile-secondbrain)" after any vault filename mentioned in chat
 - [[feedback/vault-cross-reference-integrity]] — propagate moved facts/new files to all referencing files + README in the same edit
 - [[feedback/rename-move-verification-checklist]] — on any rename/move, check both "still functions" AND "every identity registry updated" before declaring done
+- [[feedback/fix-root-cause-not-just-instance]] — every fix must also prevent recurrence, not just resolve the one instance
 
 ---
 

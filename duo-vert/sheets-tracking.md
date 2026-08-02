@@ -9,7 +9,7 @@ metadata:
 Emile wants 3 Google Sheets (tabs, not website pages) to run [[duo-vert/company|Duo Vert]]'s back office:
 
 1. **Leads sheet** — ✅ done, see below.
-2. **Expenses sheet** — every purchase/money leaving the account. Not started.
+2. **Expenses sheet** — ✅ done, see below.
 3. **Clients/revenue sheet** — revenue per client. Not started.
 
 **Why:** no structured tracking previously existed — quote requests only landed as emails, no lead pipeline, no expense or revenue tracking.
@@ -53,5 +53,28 @@ The Apps Script has a dedup safeguard (`isDuplicateSubmission`, keyed by Netlify
 **`onEdit` originally swallowed all errors silently** ("ne pas bloquer les modifications manuelles") — meant `moveRowPreToPost` could fail completely (leaving a lead stuck in Pré-soumission, checkbox still TRUE) with zero visible indication anything went wrong. This is likely what happened when Grace and Perreault's leads didn't move to Post-soumission after checking their boxes, while Emile worked around it by manually copying their data into Post (incompletely, missing Moyen de contact/date fields — that mismatch was the tell that pointed at a silent failure rather than a column-mapping bug). Fixed: `handlePreEdit`/`handlePostEdit` now catch and log the specific move error to `PropertiesService` (key `lastError`) instead of swallowing it via the outer try/catch.
 
 **Current live script state**: centered text alignment added to all data cells; menu item renamed to "⚠️ Reinitialiser tous les onglets (efface tout)" to make the danger obvious. Full corrected script lives in this conversation's history (2026-08-01) — if it needs re-pasting from scratch, regenerate from the lessons above rather than trusting an older cached version.
+
+## Expenses sheet — done (2026-08-02)
+
+Built locally as an XLSX (`~/Documents/Duo Vert - Dépenses.xlsx`, generated via a Python/openpyxl script) and handed to Emile to import himself into Google Sheets — per [[feedback/build-locally-not-live-browser]], never drove the live Sheets UI to construct it. He imports fresh copies himself each iteration (File → Import → Replace/new spreadsheet); no live sheet URL is authoritative until he says so.
+
+**Why 2-person split via one shared log, not two sheets:** Emile & Beckett wanted to track who paid for what. Two separate per-person tabs would duplicate categories/totals and require manual sync — recommended and built instead: one shared "Dépenses" log with a "Payé par" dropdown (Emile/Beckett), reconciled on a dashboard.
+
+**Why running balance + bulk settlements, not per-item reimbursement:** per-item reimbursement checkboxes were rejected as too tedious for daily use. Settled on a Splitwise-style pattern instead — dashboard auto-computes net balance owed `(Total Emile − Total Beckett)/2`, adjusted by a separate "Règlements"/"E-Transfer" tab where they log lump-sum paybacks whenever convenient (not per-item).
+
+**Structure — 4 tabs:**
+1. **Guide** (first tab) — 3-step plain-language instructions, so Beckett doesn't need to ask Emile how it works.
+2. **Dépenses** — Date, Payé par, Catégorie, Description, Montant, Notes. Live totals row (sum + count) at the bottom.
+3. **E-Transfer** (renamed from "Règlements" per Emile's preference) — Date, De, À, Montant, Note. Same live totals row.
+4. **Tableau de bord** — totals by person, by catégorie (with data bars), by month, and the balance-owed line highlighted in green with a plain-language sentence ("Beckett doit à Emile : $X").
+
+**Catégories (final, after iteration):** Matériaux, Essence/Transport, Équipement, Entretien machinerie, Annonce, Repas/Divers, Autre. Earlier drafts had Assurances/Outils/Marketing-site-web — Emile swapped those out; "Équipement" was added back in a later pass.
+
+**Formatting decisions worth remembering if rebuilding:**
+- **Every cell centered** — Emile's explicit instruction after reviewing a draft with mixed alignment (categorical columns centered, description left, amounts right). He wants uniform centering everywhere, no exceptions, including Montant and free-text columns.
+- **Native gridlines must stay ON** for the two data-entry tabs (Dépenses, E-Transfer). An earlier draft hid gridlines (`showGridLines = False`) relying only on thin per-cell borders — Emile flagged this as looking "half-finished" past the header row. Fixed by leaving gridlines on for those two tabs (dashboard/guide tabs can keep them off, no complaint there).
+- **Category dropdown values need color-coded conditional formatting** (soft fill + colored bold text per category) so the Catégorie column is scannable without reading every cell.
+- **Data validation matters for a 2-person shared file**: Payé par/De/À are dropdown-only with error messages (typos would break the SUMIF-based dashboard silently); Montant must be >0; a custom rule blocks "De" = "À" on the same E-Transfer row (would silently corrupt the balance formula).
+- Tab colors (green/gold/dark-green/grey) added for at-a-glance navigation between the 4 tabs.
 
 See also: [[duo-vert/company]], [[feedback/build-locally-not-live-browser]]
