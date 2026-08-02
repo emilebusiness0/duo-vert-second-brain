@@ -3,7 +3,7 @@ name: duo-vert-memory-architecture
 description: How this vault works, why curated notes over raw session dumps, and the real sync gap between Claude Code, Cowork, and claude.ai
 metadata:
   type: project
-  modified: 2026-07-30
+  modified: 2026-08-02
 ---
 
 **Setup (2026-07-30):** Emile migrated from an old computer to a new Mac, which surfaced that Claude Code's memory (`~/.claude/projects/.../memory/`) is local to one machine, and separate from Cowork's own skill storage and claude.ai's memory feature — three disconnected stores. Also discovered `duovert-site-fixed` (the actual website source files) never made it to the new Mac; the Netlify-deployed site's source still needs transferring from the old machine.
@@ -20,9 +20,7 @@ metadata:
 
 **Why the underlying Code memory files still physically live at `~/.claude/projects/.../memory/`:** that exact path is hardcoded into how Claude Code auto-injects memory at session start — not something that can be redirected from inside a session. So the real files live in this vault, and symlinks at the original path point back here, keeping the auto-load working without duplicating content.
 
-**Full website-build history migrated in (2026-07-30, same session):** the entire ~717-line `duo-vert` Claude Code skill (design system, AI Studio prompt playbook, photo workflow + the image-corruption saga, SEO audit history) was split into 5 topic files and added to the vault + symlinked into Code's memory index — [[duo-vert/website-build-overview]], [[duo-vert/design-system]], [[duo-vert/ai-studio-playbook]], [[duo-vert/photo-workflow]], [[duo-vert/seo-history]]. Reason: the vault previously only had the small curated memory files, not 6 months of build decisions that actually live in the skill — Emile flagged this gap directly ("that's not enough context... werent you going to add all the duo vert skill content inside?").
-
-**Confirmed working end-to-end this session:** Obsidian opened the vault correctly via "Open folder as vault" (the `obsidian://open` deep-link didn't work on first launch before any vault existed — needed the manual Open once; should work automatically after that). Graph view confirmed functional.
+**Full website-build history migrated in 2026-07-30:** the old `duo-vert` Claude Code skill (design system, AI Studio prompt playbook, photo workflow, SEO audit history) was split into 5 topic files, now the source of truth — [[duo-vert/website-build-overview]], [[duo-vert/design-system]], [[duo-vert/ai-studio-playbook]], [[duo-vert/photo-workflow]], [[duo-vert/seo-history]].
 
 **Still outstanding (Tasks-plugin format, added 2026-08-01 — installed the Obsidian Tasks plugin, converting this list to real trackable checkboxes instead of prose):**
 - [x] `duovert-site-fixed` transferred from old computer ✅ 2026-08-01 — Emile uploaded to Google Drive; Claude Code pulled it via the Drive API, restored to `~/Documents/duovert-site`, rebuilt `node_modules`, verified local preview (`npm run dev`, port 3000). Full detail in [[duo-vert/website-build-overview]].
@@ -31,16 +29,14 @@ metadata:
 
 **Going forward:** every future Code/Cowork session working on Duo Vert should read this vault's `README.md` first, then write a short dated update to the relevant file at session end — this is how "what did we do 2 weeks ago" will keep working. Confirmed with Emile this is the expected behavior (2026-07-30).
 
-## Cowork read/write investigation — resolved read, unresolved write (2026-07-30)
+## Cowork read/write — resolved (2026-07-30 – 2026-08-01)
 
-Connected the vault to Cowork via a GitHub repo (`emilebusiness0/emile-secondbrain`, renamed 2026-08-01 from `duo-vert-second-brain` since the vault covers more than Duo Vert now; mirror of this vault, pushed manually via `git push` from Terminal since Cowork can't handle credentials). Repo made **public** after private-repo auth was confirmed as the likely reason a generic web-fetch tool returned empty results.
+Vault connected to Cowork via the public GitHub repo `emilebusiness0/emile-secondbrain` (pushed manually via `git push` from Terminal — Cowork can't handle credentials).
 
-**Read side — works, but not via the expected path.** Cowork's own web-fetch tool failed twice even on the public repo (returned URL, not content — cause unclear, possibly still environment-specific). It self-recovered by finding a different available integration ("vibiz") that successfully retrieved accurate content, matching the real vault file names — confirmed genuine, not hallucinated. Not a clean/guaranteed mechanism, but functional in practice across 2 tests.
+**Read confirmed reliable** — works via a different available integration ("vibiz"), not Cowork's own web-fetch tool (which returned empty/failed). Verified genuine live pulls (not cache/hallucination) across 3 separate tests, including one where Cowork correctly reported facts added to the vault in that same session.
 
-**3rd successful read confirmed 2026-08-01** — Emile asked Cowork to read `duo-vert/sheets-tracking.md` and report the lead-webhook proxy URL and whether an Excalidraw diagram was referenced. Cowork returned the exact correct proxy URL, correctly identified the diagram file, AND correctly noted the deliberate omission of the Apps Script exec URL for security reasons — all facts added to the vault in this same session, so this wasn't stale/cached content, proving Cowork is genuinely pulling live vault state. Read reliability now confirmed across 3 separate tests.
+**Write confirmed impossible** — Cowork has no sandbox/shell environment (its "Code" tab is just a shortcut into Claude Code, not independent execution), so it can't `git push`. The in-chat folder-connect tool also doesn't persist across sessions.
 
-**Write side — does not work, ruled out deliberately.** Tested whether Cowork had any sandbox/shell environment (its "Code" sidebar tab turned out to just be a shortcut into Claude Code itself, not an independent execution environment) — confirmed none exists, so there's no way for Cowork to `git push` updates back to the repo. The earlier in-chat folder-connect tool also doesn't persist across sessions (confirmed via direct test: a fresh conversation had zero folder access despite a prior session having granted it).
-
-**Resolution:** Cowork's `duo-vert-ops` skill (Cowork's own local copy, separate file from this vault) now instructs it to draft a copy-pasteable update in the chat reply at session end instead of attempting to write anywhere, and Emile relays it into a Code session or edits the GitHub file directly. This is a manual step, but only needed for sessions that actually produced something worth remembering — not every session.
+**Resolution:** Cowork's `duo-vert-ops` skill (Cowork's own local copy, separate from this vault) drafts a copy-pasteable update in the chat reply at session end instead of attempting to write anywhere; Emile relays it into a Code session or edits the GitHub file directly — only needed for sessions that actually produced something worth remembering.
 
 See also: [[duo-vert/company]], [[duo-vert/sheets-tracking]], [[duo-vert/website-build-overview]]
