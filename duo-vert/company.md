@@ -6,7 +6,7 @@ metadata:
   modified: 2026-07-29
 ---
 
-Duo Vert is [[duo-vert/company|Emile]]'s own company — a 2-person interlock paver (pavé-uni) business run with a partner, Beckett, based in Gatineau, Quebec.
+Duo Vert is [[personal/about-emile|Emile]]'s own company — a 2-person interlock paver (pavé-uni) business run with a partner, Beckett, based in Gatineau, Quebec.
 
 **Services:** restoration/repair, cleaning, sealing (scellant — Techniseal brand), and leveling (nivelage) of interlocking paver surfaces (driveways, patios, walkways). Nivelage/nettoyage are not sold standalone — they're steps within a restoration project.
 
@@ -25,4 +25,4 @@ Duo Vert is [[duo-vert/company|Emile]]'s own company — a 2-person interlock pa
 
 **Quote form:** site has a quote-request form that emails Emile the submission (name, phone, email, address, service type, details, optional photo) — now also automated into a Google Sheets lead tracker, see [[duo-vert/sheets-tracking]].
 
-See also: [[duo-vert/sheets-tracking]], [[feedback/build-locally-not-live-browser]]
+See also: [[duo-vert/sheets-tracking]], [[duo-vert/soumission-template]], [[feedback/build-locally-not-live-browser]]
