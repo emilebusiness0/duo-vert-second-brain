@@ -18,4 +18,4 @@ Concretely for this vault: a rename touches at minimum — the folder itself, Cl
 
 **Also:** don't say "I'll fold this into a checklist" or "I'll remember this for next time" in chat without actually writing it down in the same turn — see [[feedback/proactive-vault-saving]] for why that specific failure mode (saying it instead of saving it) keeps recurring.
 
-See also: [[feedback/proactive-vault-saving]], [[duo-vert/memory-architecture]]
+See also: [[feedback/proactive-vault-saving]], [[duo-vert/memory-architecture]], [[feedback/vault-cross-reference-integrity]]

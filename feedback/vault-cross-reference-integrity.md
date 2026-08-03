@@ -17,4 +17,4 @@ Caught during the 2026-07-31 memory consolidation: two files (`duo-vert/company.
 
 **Why:** the whole point of the vault is that a fact written once stays findable and accurate without a human re-auditing it. A stale pointer is worse than no pointer — it looks authoritative and sends the next session to a file that may no longer exist.
 
-See also: [[duo-vert/memory-architecture]], [[feedback/proactive-vault-saving]]
+See also: [[duo-vert/memory-architecture]], [[feedback/proactive-vault-saving]], [[feedback/rename-move-verification-checklist]]

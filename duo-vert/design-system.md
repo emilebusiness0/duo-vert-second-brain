@@ -3,7 +3,7 @@ name: duo-vert-design-system
 description: The structural rules every Duo Vert page must follow — hero CSS values, service page structure, review inventory, verification checklist. Migrated from the duo-vert Claude Code skill.
 metadata:
   type: project
-  modified: 2026-07-30
+  modified: 2026-08-03
 ---
 
 Structural source of truth is `restauration-pave-uni-gatineau` for service pages, `/gatineau/` for city pages. See [[duo-vert/website-build-overview]] for overall status.
@@ -32,8 +32,8 @@ Hero height = padding-top + heroContentHeight + padding-bottom. Gatineau referen
 ## City page structure (different — discovery pages, not service pages)
 
 1. Hero — H1 with city name, 1 CTA
-2. "Nos services à [Ville]" — 4 cards to the service pages
-3. Section régionale — 1 prose paragraph, locally personalized (ranks better than cards for local SEO)
+2. Section régionale — 1 prose paragraph, locally personalized (ranks better than cards for local SEO)
+3. "Nos services à [Ville]" — 4 cards to the service pages
 4. Quartiers desservis — neighborhoods list (hyperlocal search capture)
 5. FAQ — 3-4 city-specific questions
 6. CTA Final — identical to service pages
