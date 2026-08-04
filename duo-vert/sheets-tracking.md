@@ -3,7 +3,7 @@ name: duo-vert-sheets-tracking
 description: Emile's plan for 3 Google Sheets (leads, expenses, clients/revenue) for Duo Vert, and the lead-tracking automation that's now live
 metadata:
   type: project
-  modified: 2026-08-01
+  modified: 2026-08-02
 ---
 
 Emile wants 3 Google Sheets (tabs, not website pages) to run [[duo-vert/company|Duo Vert]]'s back office:

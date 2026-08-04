@@ -3,7 +3,7 @@ name: duo-vert-website-build-overview
 description: Website project status, source-of-file-truth location, and the launch checklist — migrated from the duo-vert Claude Code skill
 metadata:
   type: project
-  modified: 2026-08-01
+  modified: 2026-08-02
 ---
 
 Goal: 15+ page site (duovert.ca) to rank #1 for pavé-uni searches in Gatineau/Ottawa. See [[duo-vert/company]] for the business itself. **Correction (2026-08-01):** the actual project is Vite + React (`package.json` confirms `react`, `vite`), not plain static HTML as previously described here — each page under `public/` is still a static, pre-built `index.html` though, so the SEO-visible-content workflow is unaffected.

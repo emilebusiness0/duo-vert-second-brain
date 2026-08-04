@@ -3,7 +3,7 @@ name: personal-dev-environment
 description: What's installed and authenticated on Emile's Mac for Claude Code to use directly, so future sessions don't assume tools are missing
 metadata:
   type: user
-  modified: 2026-08-01 (Obsidian plugin decision added)
+  modified: 2026-08-02 (Playwright MCP + Claude in Chrome blocker added)
 ---
 
 **Homebrew**: installed 2026-08-01 (`/opt/homebrew/bin/brew`). Not yet on PATH in already-open Terminal windows/sessions — new windows pick it up automatically via `.zprofile`; from inside a Claude Code session, call it by full path (`/opt/homebrew/bin/brew`, `/opt/homebrew/bin/gh`) rather than assuming `brew`/`gh` resolve on PATH.

@@ -3,7 +3,7 @@ name: about-emile
 description: General facts about Emile not specific to Duo Vert — role, preferences, other projects
 metadata:
   type: user
-  modified: 2026-07-30
+  modified: 2026-08-02
 ---
 
 **Scope note:** this file (and the `personal/` folder generally) is for facts about Emile that aren't specific to Duo Vert — his other work, general preferences, how he likes to collaborate. Duo Vert business/website facts belong in `duo-vert/` instead, not here.

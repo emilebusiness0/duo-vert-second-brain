@@ -3,7 +3,7 @@ name: duo-vert-company
 description: What Duo Vert is — Emile's paver company, services, area, pricing, and site project
 metadata:
   type: project
-  modified: 2026-07-29
+  modified: 2026-08-02
 ---
 
 Duo Vert is [[personal/about-emile|Emile]]'s own company — a 2-person interlock paver (pavé-uni) business run with a partner, Beckett, based in Gatineau, Quebec.
