@@ -3,7 +3,7 @@ name: duo-vert-website-build-overview
 description: Website project status, source-of-file-truth location, and the launch checklist — migrated from the duo-vert Claude Code skill
 metadata:
   type: project
-  modified: 2026-08-02
+  modified: 2026-08-05
 ---
 
 Goal: 15+ page site (duovert.ca) to rank #1 for pavé-uni searches in Gatineau/Ottawa. See [[duo-vert/company]] for the business itself. **Correction (2026-08-01):** the actual project is Vite + React (`package.json` confirms `react`, `vite`), not plain static HTML as previously described here — each page under `public/` is still a static, pre-built `index.html` though, so the SEO-visible-content workflow is unaffected.
@@ -67,7 +67,7 @@ Everything else (restauration, nettoyage, scellant, nivelage, all 5 Gatineau-reg
 
 **Fixed:** submitted `https://duovert.ca/sitemap.xml` via GSC Sitemaps report. **Gotcha:** the submission field rejected a relative path (`sitemap.xml`) with "Invalid sitemap address" — needs the full absolute URL for this domain-property. Verified the file itself is healthy first (200, `content-type: application/xml`, served correctly by Netlify) before submitting. Status showed "Couldn't fetch" immediately after submission — normal transient state before Google's first crawl attempt, not an error.
 
-**Not yet done:** once the sitemap shows processed (check back in a few days), use URL Inspection → Request Indexing on the previously-undiscovered pages individually to speed things up. Also still open from the original analysis: rewrite title/meta on pages ranking top-3 with 0% CTR (interlock stones/driveway gatineau, scellant hull, pavage gatineau — all high position, zero clicks, likely unappealing snippets); consolidate "pavé uni gatineau" spelling variants and push internal linking toward that phrase; GBP completion + reviews still not done (see launch checklist above) and likely matters more than more content right now given how brand-dependent traffic still is.
+**Not yet done:** once the sitemap shows processed (check back in a few days), use URL Inspection → Request Indexing on the previously-undiscovered pages individually to speed things up. Also still open from the original analysis: rewrite title/meta on the remaining top-3-position-but-0%-CTR pages (interlock stones/driveway gatineau — scellant hull and pavage gatineau were fixed the same day, see the follow-up session below); consolidate "pavé uni gatineau" spelling variants and push internal linking toward that phrase; GBP completion + reviews still not done (see launch checklist above) and likely matters more than more content right now given how brand-dependent traffic still is.
 
 ## Follow-up session (2026-08-02, same day): title/meta fixes + GBP services + GBP posts
 
