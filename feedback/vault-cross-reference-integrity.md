@@ -3,7 +3,7 @@ name: feedback-vault-cross-reference-integrity
 description: When a fact moves or a file gets added, propagate the change to everything that references it, in the same edit — don't leave stale pointers for a later consolidation pass
 metadata:
   type: feedback
-  modified: 2026-07-31
+  modified: 2026-08-03
 ---
 
 Caught during the 2026-07-31 memory consolidation: two files (`duo-vert/company.md`, `duo-vert/sheets-tracking.md`) still pointed to the old `.claude/skills/duo-vert/SKILL.md` as the source of full detail, even though that content was migrated into the vault on 2026-07-30 — a full day earlier, same session lineage. The vault's own `README.md` was also missing two feedback files that already existed and were already listed in `MEMORY.md`.

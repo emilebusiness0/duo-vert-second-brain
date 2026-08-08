@@ -3,7 +3,7 @@ name: feedback-build-locally-not-live-browser
 description: Prefer generating files locally for the user to import/paste themselves over driving a live browser session to build things in Google Sheets/Apps Script/etc.
 metadata:
   type: feedback
-  modified: 2026-07-30
+  modified: 2026-08-01
 ---
 
 When building something that will live in an external web app (Google Sheets + Apps Script, a config file, etc.), prefer writing the deliverable to a local file and handing it to the user to import/paste themselves, rather than driving a live browser automation session to click through the UI.

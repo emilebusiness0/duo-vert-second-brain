@@ -3,7 +3,7 @@ name: feedback-rename-move-verification-checklist
 description: When renaming or moving something (a folder, repo, vault), verify both the functional layer and any separate identity-registry layer before declaring it done
 metadata:
   type: feedback
-  modified: 2026-08-01
+  modified: 2026-08-03
 ---
 
 Caught during the 2026-08-01 vault rename (`second-brain` → `emile-secondbrain`): after renaming the local folder and GitHub repo, verification checked the REST API responded and file listing was correct, then declared it "all clear." But Obsidian tracks vault identity in its own separate config (`~/Library/Application Support/obsidian/obsidian.json`), independent of the filesystem — that registry still pointed at the old, now-nonexistent path. The API kept working only because the already-running Obsidian process had the old folder handle open in memory, which masked the stale registry underneath. Emile had to ask "does Obsidian show the new name" before this surfaced.

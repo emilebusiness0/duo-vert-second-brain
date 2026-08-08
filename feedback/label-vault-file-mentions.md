@@ -3,7 +3,7 @@ name: feedback-label-vault-file-mentions
 description: Whenever a vault/memory file's long kebab-case name is mentioned in a reply, append "(emile-secondbrain)" in parentheses right after it so Emile knows it's referring to the vault.
 metadata:
   type: feedback
-  modified: 2026-08-01
+  modified: 2026-08-03
 ---
 
 When mentioning a specific vault file by name in a reply (e.g. `feedback/build-locally-not-live-browser.md`), append "(emile-secondbrain)" in parentheses immediately after the filename.
